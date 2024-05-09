@@ -1,17 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+
 <body>
-<table>
-    <tr th:each="course: ${courses}">
-        <td th:text = "${course.getIdc()}"></td>
-        <td th:text = "${course.getCp()}"></td>
-        <td th:text = "${course.getTitle()}"></td>
-        <td th:text = "${course.getProfessor().getName()}"></td>
+<table 	border="1">
+    <tr th:each="tempC: ${courses}">
+        <td th:text = "${tempC.getIdc()}"></td>
+        <td th:text = "${tempC.getTitle()}"></td>
+        <td th:text = "${tempC.getCp()}"></td>
+
+
+        <td>
+            <ul>
+                <li th:each="tempP : ${tempC.getProfessors()}">
+                    <span th:text="${tempP.getName()}">Name</span>
+                    <span th:text="${tempP.getSurname()}">Name</span>
+                </li>
+            </ul>
+        </td>
+
+
     </tr>
 </table>
 </body>
+
 </html>

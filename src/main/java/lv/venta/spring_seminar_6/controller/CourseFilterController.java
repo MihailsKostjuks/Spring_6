@@ -30,7 +30,7 @@ public class CourseFilterController {
         }
     }
 
-    @GetMapping("/professor")  // localhost:8080/course/filter/student?id=2
+    @GetMapping("/professor")  // localhost:8080/course/filter/professor?id=2
     public String getCourseFilterProfessorById(
             @RequestParam("id") int id,
             Model model
