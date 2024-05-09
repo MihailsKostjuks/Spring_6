@@ -40,12 +40,9 @@ public class Course {
     @Column(name = "Cp")
     private int cp;
 
-    @ManyToMany
-    @JoinTable(name = "CourseProfessorTable",
-            joinColumns = @JoinColumn(name="Idc"),
-            inverseJoinColumns = @JoinColumn(name="Idp"))
-    //@JoinColumn(name = "Idp")//otras kalses Column nosaukums
-    private Collection<Professor> professors = new ArrayList<Professor>();
+    @OneToOne
+    @JoinColumn(name = "Idp")//otras kalses Column nosaukums
+    private Professor professor;
 
     @OneToMany(mappedBy = "course")//saite uz otras klases mainīgo
     @ToString.Exclude
@@ -54,23 +51,14 @@ public class Course {
 
 
 
-    public Course(String title, int cp, Professor ... professors) {
+    public Course(String title, int cp, Professor professor) {
         setTitle(title);
         setCp(cp);
-        for(Professor tempP: professors)
-            addProfessor(tempP);
-    }
-
-    public void addProfessor(Professor professor) {
-        if(!professors.contains(professor))
-            professors.add(professor);
+        setProfessor(professor);
     }
 
 
-    public void deleteProfessor(Professor professor) {
-        if(professors.contains(professor))
-            professors.remove(professor);
-    }
+
 
 
 

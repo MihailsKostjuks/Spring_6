@@ -43,9 +43,9 @@ public class Professor {
     @Column(name = "Degree")
     private Degree degree;
 
-    @ManyToMany(mappedBy = "professors")
+    @OneToOne(mappedBy = "professor")//ir otras klases mainīgā nosaukums
     @ToString.Exclude
-    private Collection<Course> courses = new ArrayList<Course>();
+    private Course course;
 
     public Professor(String name, String surname, Degree degree) {
         setName(name);
@@ -54,14 +54,13 @@ public class Professor {
     }
 
 
-    public void addCourse(Course course) {
-        if(!courses.contains(course))
-            courses.add(course);
-    }
 
-    public void deleteCourse(Course course) {
-        if(courses.contains(course))
-            courses.remove(course);
-    }
+
+
+
+
+
+
+
 
 }
