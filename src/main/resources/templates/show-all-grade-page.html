@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr th:each="grade: ${grades}">
+        <td th:text = "${grade.getGrvalue()}"></td>
+        <td th:text = "${grade.getStudent().getName()}"></td>
+        <td th:text = "${grade.getStudent().getSurname()}"></td>
+        <td th:text = "${grade.getCourse().getTitle()}"></td>
+    </tr>
+</table>
+</body>
+</html>
