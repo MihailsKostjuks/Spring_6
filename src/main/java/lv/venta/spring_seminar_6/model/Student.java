@@ -25,24 +25,12 @@ import lv.venta.spring_seminar_6.model.Grade;
 @ToString
 @Table(name = "StudentTable")
 @Entity
-public class Student {
+public class Student extends Person{
     @Setter(value = AccessLevel.NONE)
     @Column(name = "Ids")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long ids;
-
-    @NotNull
-    @Size(min = 2, max = 20)
-    @Pattern(regexp = "[A-Z]{1}[a-z]+") //TODO nokopēt no iepriekšējiem semināriem arī ar mīkstinājumu/garumu zīmēm
-    @Column(name = "Name")
-    private String name;
-
-    @NotNull
-    @Size(min = 2, max = 40)
-    @Pattern(regexp = "[A-Z]{1}[a-z]+") //TODO nokopēt no iepriekšējiem semināriem arī ar mīkstinājumu/garumu zīmēm
-    @Column(name = "Surname")
-    private String surname;
 
 
     @OneToMany(mappedBy = "student")
@@ -51,8 +39,7 @@ public class Student {
 
 
     public Student(String name, String surname) {
-        setName(name);
-        setSurname(surname);
+        super(name, surname);
     }
 
 }
